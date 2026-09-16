@@ -1,0 +1,16 @@
+name: Deploy to Pages
+on:
+  push:
+    branches: [main]
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    runs-on: [self-hosted, decathlon]
+    steps:
+      - name: Deploy to Pages
+        uses: dktunited/pages/.github/actions/deploy-pages@main
+        with:
+          # Point this at the folder your CI builds your static site into
+          directory: out
